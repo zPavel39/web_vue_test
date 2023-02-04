@@ -1,30 +1,52 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <div class="app">
+        <div class="app__container">
+            <div class="app__header">
+                <SearchInput/>
+            </div>
+            <div class="app__main">
+                <h2 class="app__title">
+                    Таблица Пользователей
+                </h2>
+                <MainTable
+                :columns="columns"
+                :usersList="usersList"
+                />
+            </div>
+        </div>
+    </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import SearchInput from './component/ui/searchForm/SearchForm.vue';
+import MainTable from './component/main/MainTable.vue';
+import { AllUsersList } from './database/userlistDB';
+export default {
+    components: {
+        MainTable, SearchInput,
+    },
+    data() {
+        return {
+            usersList: [],
+            columns: {
+                place: 'Место',
+                email: 'Логин',
+                confirmed: 'Подтвержденные заказы',
+                status: 'Статус',
+            }
+        }
+    },
+    computed: {
+        addUsersList() {
+            this.usersList = AllUsersList();
+            console.log(Object.keys(this.usersList))
+        },
+    },
+    mounted() {
+        this.addUsersList()
+    },
 }
+</script>
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss">
+    @import '@/assets/styles.scss';
 </style>

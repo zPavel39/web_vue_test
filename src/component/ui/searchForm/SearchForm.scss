@@ -1,0 +1,31 @@
+.form {
+    background-color: #f7f7f8;
+    border-radius: 16px;
+    height: 35px;
+    display: flex;
+    margin: 20px 15px;
+    align-items: center;
+    max-width: 400px;
+    &__left {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    &__input {
+        background-color: #f7f7f8;
+        font-size: 15px;
+        font-weight: 400;
+        font-size: 18px;
+        width: 100%;
+    }
+    &__btn {
+        margin: 0 15px;
+        border-radius: 16px;
+        background-color: #f7f7f8;
+        cursor: pointer;
+    }
+    &__img {
+        margin: 0 8px 0 10px;
+        padding-bottom: 3px;
+    }
+}

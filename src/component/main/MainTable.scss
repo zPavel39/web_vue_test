@@ -1,0 +1,35 @@
+.table {
+    margin: 0 auto;
+    border: 2px solid $color-blue;
+    border-bottom: 1px solid $color-blue;
+    &__head {
+        &_string {
+            padding: 10px 15px;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            cursor: pointer;
+            &:hover {
+                color: $color-bgHover;
+            }
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+    &__body {
+        text-align: center;
+        padding: 10px 15px;
+        &_string {
+            padding: 10px 15px;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            &:last-child {
+                border-right: none;
+            }
+        }
+        &_column {
+            border-bottom: 1px solid $color-blue;
+        }
+    }
+    
+}
