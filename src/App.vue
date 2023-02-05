@@ -1,8 +1,15 @@
 <template>
+    <SearchModal
+    @close="clickCloseModal"
+    v-if="showModal === true"
+    :sort="sort"
+    />
     <div class="app">
         <div class="app__container">
             <div class="app__header">
-                <SearchInput/>
+                <SearchForm
+                @open="clickShowBtn"
+                />
             </div>
             <div class="app__main">
                 <h2 class="app__title">
@@ -17,12 +24,13 @@
     </div>
 </template>
 <script>
-import SearchInput from './component/ui/searchForm/SearchForm.vue';
+import SearchForm from './component/ui/searchForm/SearchForm.vue';
 import MainTable from './component/main/MainTable.vue';
 import { AllUsersList } from './database/userlistDB';
+import SearchModal from './component/ui/searchModal/SearchModal.vue';
 export default {
     components: {
-        MainTable, SearchInput,
+        MainTable, SearchForm, SearchModal
     },
     data() {
         return {
@@ -32,7 +40,19 @@ export default {
                 email: 'Логин',
                 confirmed: 'Подтвержденные заказы',
                 status: 'Статус',
-            }
+            },
+            showModal: false,
+            sort: 'DATE',
+        }
+    },
+    methods: {
+        clickShowBtn(open) {
+            this.showModal = open
+            console.log(open)
+        },
+        clickCloseModal(close) {
+            this.showModal = close
+            console.log(close)
         }
     },
     computed: {
