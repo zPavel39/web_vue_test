@@ -8,8 +8,10 @@
                         <input
                             class='popup__radio'
                             type="radio"
-                            value="ABC"
-                            checked="sort == 'ABC'"
+                            value="EMAIL"
+                            @change="changeFilter"
+                            :checked="filter == 'EMAIL'"
+                            v-modal="filter"
                         />
                         По почте
                     </label>
@@ -19,8 +21,10 @@
                         <input
                             class='popup__radio'
                             type="radio"
-                            value="DATE"
-                            checked="sort == 'DATE'"
+                            value="ORDERS"
+                            @change="changeFilter"
+                            :checked="filter == 'ORDERS'"
+                            v-modal="filter"
                         />
                         По кол-ву заказов
                     </label>
@@ -30,8 +34,10 @@
                         <input
                             class='popup__radio'
                             type="radio"
-                            value="DATE"
-                            checked="sort == 'DATE'"
+                            value="STATUS"
+                            @change="changeFilter"
+                            :checked="filter == 'STATUS'"
+                            v-modal="filter"
                         />
                         По статусу
                     </label>
@@ -43,20 +49,18 @@
 <script>
 export default {
     props: {
-        sort: {
+        filter: {
             type: String,
-            required: true
-        }
-    },
-    data() {
-        return {
-            showModal: true
-        }
+        },
     },
     methods: {
         clickCloseModal() {
             this.showModal = false;
             this.$emit('close', this.showModal)
+        },
+        changeFilter(event) {
+            this.$emit('changeFilter', event.target.value)
+            console.log(event.target.value)
         }
     },
 }

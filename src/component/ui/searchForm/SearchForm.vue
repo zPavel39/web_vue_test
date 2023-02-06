@@ -6,8 +6,8 @@
                 class='form__input'
                 placeholder='Поиск...'
                 type='text'
-                v-model="searchInputText"
-                @input="inputSearch = $event.target.value"
+                :value="search"
+                @input="inputSearch"
             />
         </div>
         <button class='form__btn' @click="clickShowBtn">
@@ -17,16 +17,22 @@
 </template>
 <script>
 export default {
+    props: {
+        search: [String, Number]
+    },
     data(){
         return {
             showModal: false,
-            inputSearch: '',
         }
     },
     methods: {
         clickShowBtn() {
             this.showModal = true
             this.$emit('open', this.showModal)
+        },
+        inputSearch(event) {
+            this.$emit('update:search', event.target.value)
+            console.log(search)
         }
     },
 }

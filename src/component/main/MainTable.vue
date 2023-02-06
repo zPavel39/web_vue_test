@@ -2,7 +2,7 @@
     <table class="table">
         <thead class="table__head">
             <tr>
-                <th class="table__head_string" v-for="column in columns" :key="column">
+                <th :class="columns[sort] === column ? 'table__head_active' : 'table__head_string'"  v-for="column in columns" :key="column" @click="selectedSort(column)" v-modal="sort">
                     {{ column }}
                 </th>
             </tr>
@@ -27,7 +27,16 @@ export default {
         usersList: {
             type: Array,
             required: true
-        }   
+        },
+        sort: {
+            type: String,
+        }
+    },
+    methods: {
+        selectedSort(column) {
+            this.$emit('selectedSort', column)
+            console.log(column)
+        }
     },
 }
 </script>

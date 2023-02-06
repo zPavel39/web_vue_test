@@ -15,6 +15,19 @@
                 border-right: none;
             }
         }
+        &_active {
+            padding: 10px 15px;
+            background-color: $color-bgHover;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            cursor: pointer;
+            &:hover {
+                color: $color-blue;
+            }
+            &:last-child {
+                border-right: none;
+            }
+        }
     }
     &__body {
         text-align: center;

@@ -1,14 +1,16 @@
 <template>
     <SearchModal
-    @close="clickCloseModal"
-    v-if="showModal === true"
-    :sort="sort"
+        @close="clickCloseModal"
+        @changeFilter="changeFilter"
+        :filter="filterValue"
+        v-if="showModal === true"
     />
     <div class="app">
         <div class="app__container">
             <div class="app__header">
                 <SearchForm
-                @open="clickShowBtn"
+                    @open="clickShowBtn"
+                    v-modal:search="search"
                 />
             </div>
             <div class="app__main">
@@ -16,8 +18,10 @@
                     Таблица Пользователей
                 </h2>
                 <MainTable
-                :columns="columns"
-                :usersList="usersList"
+                    :columns="columns"
+                    :usersList="usersList"
+                    :sort="sort"
+                    @selectedSort="selectedSort"
                 />
             </div>
         </div>
@@ -42,24 +46,47 @@ export default {
                 status: 'Статус',
             },
             showModal: false,
-            sort: 'DATE',
+            filterValue: 'STATUS',
+            sort: '',
+            search: '',
         }
     },
     methods: {
         clickShowBtn(open) {
             this.showModal = open
-            console.log(open)
         },
         clickCloseModal(close) {
             this.showModal = close
-            console.log(close)
+        },
+        changeFilter(changeFilter){
+            this.filterValue = changeFilter
+        },
+        selectedSort(selectedSort) {
+            const columnsArr = this.columns
+            this.sort = Object.keys(columnsArr).find(key => columnsArr[key] === selectedSort)
+            const sortValue = this.sort
+            if (selectedSort === "Место" || "Подтвержденные заказы") {
+                this.usersList.sort((a, b) => {
+                    let A = a[sortValue], B = b[sortValue]
+                    return A - B
+                })    
+            }
+            if (selectedSort === "Логин" || "Статус") {
+                this.usersList.sort((a, b) => {
+                    let A = a[sortValue].toLowerCase(), B = b[sortValue].toLowerCase()
+                    return A.localeCompare(B)
+                })   
+            }
+            console.log('usersList', this.usersList)
+            console.log('sort=',this.sort)
         }
     },
     computed: {
         addUsersList() {
             this.usersList = AllUsersList();
-            console.log(Object.keys(this.usersList))
+            console.log(this.usersList);
         },
+        
     },
     mounted() {
         this.addUsersList()
