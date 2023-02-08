@@ -22,7 +22,7 @@
                     :columns="columns"
                     :usersList="userSearch"
                     :sort="sort"
-                    @selectedSort="setSort"
+                    @selected="setSort"
                 />
             </div>
         </div>
