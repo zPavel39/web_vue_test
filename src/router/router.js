@@ -3,6 +3,10 @@ import { createRouter, createWebHistory } from "vue-router"
 
 const routes = [
     {
+        path: '/',
+        component: MainPage
+    },
+    {
         path: '/MainPage',
         component: MainPage
     },
