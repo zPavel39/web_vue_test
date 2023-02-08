@@ -1,16 +1,7 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 .app {
-  &__container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 1100px;
-    margin: 0 auto;
-  }
-  &__title {
-    font-size: 24px;
-    margin-bottom: 24px;
-    margin-left: 15px;
-  }
+    height: 100%;
 }

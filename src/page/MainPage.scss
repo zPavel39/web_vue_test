@@ -1,0 +1,22 @@
+.main {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1100px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  &__title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+}
+@media (max-width:410px) {
+  .main {
+      &__container {
+        padding: 0 3px;
+      }
+  }
+}

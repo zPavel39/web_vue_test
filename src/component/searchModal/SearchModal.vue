@@ -21,9 +21,9 @@
                         <input
                             class='popup__radio'
                             type="radio"
-                            value="ORDERS"
+                            value="CONFIRMED"
                             @change="changeFilter"
-                            :checked="filter == 'ORDERS'"
+                            :checked="filter == 'CONFIRMED'"
                             v-modal="filter"
                         />
                         По кол-ву заказов
@@ -56,11 +56,10 @@ export default {
     methods: {
         clickCloseModal() {
             this.showModal = false;
-            this.$emit('close', this.showModal)
+            this.$emit('clickCloseModal', this.showModal)
         },
         changeFilter(event) {
             this.$emit('changeFilter', event.target.value)
-            console.log(event.target.value)
         }
     },
 }

@@ -1,0 +1,107 @@
+.table {
+    margin: 0 auto;
+    border: 2px solid $color-blue;
+    border-bottom: 1px solid $color-blue;
+    &__head {
+        &_string {
+            padding: 15px 10px;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            flex-wrap: wrap;
+            cursor: pointer;
+            &:hover {
+                color: $color-bgHover;
+            }
+            &:last-child {
+                border-right: none;
+            }
+            &:first-child {
+                max-width: 80px;
+            }
+        }
+        &_active {
+            padding: 15px 10px;
+            background-color: $color-bgHover;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            cursor: pointer;
+            &:hover {
+                color: $color-blue;
+            }
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+    &__body {
+        &_string {
+            padding: 15px 10px;
+            border-right: 1px solid $color-blue;
+            border-bottom: 1px solid $color-blue;
+            &:last-child {
+                border-right: none;
+            }
+            &:first-child {
+                max-width: 80px;
+            }
+        }
+        &_column {
+            border-bottom: 1px solid $color-blue;
+        }
+    }
+    &__false {
+        margin-top: 50px;
+        text-align: center;
+        &_title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: $color-blue;
+        }
+        &_description {
+            font-style: italic;
+        }
+    }
+}
+
+@media (max-width:640px) {
+    .table {
+        font-size: 15px;
+        &__head {
+            
+            &_string {
+                padding: 10px 5px;
+            }
+            &_active {
+                padding: 10px 5px;
+            }
+        }
+        &__body {
+            &_string {
+                padding: 10px 5px;
+            }
+        }
+    }
+}
+@media (max-width:510px) {
+    .table {
+        font-size: 12px;
+    }
+}
+@media (max-width:420px) {
+    .table {
+        font-size: 12px;
+        &__head {     
+            &_string {
+                padding: 5px 3px;
+            }
+            &_active {
+                padding: 5px 3px;
+            }
+        }
+        &__body {
+            &_string {
+                padding: 5px 3px;
+            }
+        }
+    }
+}
