@@ -34,8 +34,8 @@
             <p class="table__false_description">Попробуй скорректировать запрос</p>
     </div>
 </template>
-<script>
 
+<script>
 export default {
     props: {
         columns: {
@@ -51,12 +51,13 @@ export default {
     },
     methods: {
         selectedSort(column) {
-            this.$emit('selectedSort', Object.keys(this.columns).find(key => this.columns[key] === column))
+            this.$emit('selected', Object.keys(this.columns).find(key => this.columns[key] === column))
         },
     },
 }
 </script>
+
 <style lang="scss">
-@import '@/assets/styles.scss';
-@import './MainTable.scss';
+    @import '@/assets/variables.scss';
+    @import './MainTable.scss';
 </style>

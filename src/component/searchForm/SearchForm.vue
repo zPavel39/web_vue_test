@@ -27,7 +27,7 @@ export default {
             this.showModal = true
             this.$emit('clickShowBtn', this.showModal)
         },
-        updateSearch(event) {
+        inputSearch(event) {
             this.search = event.target.value.toLowerCase()
             this.$emit('updateSearch', this.search)
         }
