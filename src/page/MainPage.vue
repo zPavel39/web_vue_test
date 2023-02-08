@@ -28,6 +28,7 @@
         </div>
     </div>
 </template>
+
 <script>
 import SearchForm from '@/component/searchForm/SearchForm.vue';
 import MainTable from '@/component/mainTable/MainTable.vue';
@@ -57,14 +58,14 @@ export default {
         },
         clickCloseModal(close) {
             this.showModal = close
-        },        
+        },
     },
     watch: {
-        sort(sort) {
-             this.$router.push(`/MainPage/${this.filterValue}/${sort}`)
+        sort() {
+             this.$router.push(`/MainPage/${this.filterValue}/${this.sort}`)
         },
-        filterValue(filterValue) {
-            this.$router.push(`/MainPage/${filterValue}/${this.sort}`)
+        filterValue() {
+            this.$router.push(`/MainPage/${this.filterValue}/${this.sort}`)
         }
     },
     computed: {
@@ -80,11 +81,14 @@ export default {
             usersSort: 'usersSort'
         }),
     },
+    
     mounted() {
         this.setFilterValue(this.$route.params.filter)
         this.setSort(this.$route.params.sort)
         this.fetchUserList()
     },
+    updated() {
+    }
 }
 </script>
 
